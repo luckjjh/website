@@ -25,17 +25,17 @@ The following animation shows the app's behavior:
 This recipe begins with the photo and filters
 already in place. Filters are applied with the
 `color` and `colorBlendMode` properties of the
-[`Image`][] widget].
+[`Image`][] widget.
 
 ## Add a selector ring and dark gradient
 
 The selected filter circle is displayed within a
 selector ring. Additionally, a dark gradient is
-behind the available filters, which helps the contrast 
+behind the available filters, which helps the contrast
 between the filters and any photo that you choose.
 
 Create a new stateful widget called
-`FilterSelector` that you’ll use to 
+`FilterSelector` that you’ll use to
 implement the selector.
 
 <?code-excerpt "lib/excerpt1.dart (FilterSelector)"?>
@@ -80,7 +80,7 @@ Stack(
 ```
 
 Within the `FilterSelector` widget,
-display a selector ring on top of a 
+display a selector ring on top of a
 dark gradient by using a `Stack` widget.
 
 <?code-excerpt "lib/excerpt2.dart (FilterSelectorState2)"?>
@@ -151,12 +151,12 @@ The size of the selector circle and the background gradient
 depends on the size of an individual filter in the carousel
 called `itemSize`. The `itemSize` depends on the available width.
 Therefore, a `LayoutBuilder` widget is used to determine the
-available space, and then you calculate the size of an 
+available space, and then you calculate the size of an
 individual filter’s `itemSize`.
 
 The selector ring includes an `IgnorePointer` widget
 because when carousel interactivity is added,
-the selector ring shouldn’t interfere with 
+the selector ring shouldn’t interfere with
 tap and drag events.
 
 ## Create a filter carousel item
@@ -206,26 +206,26 @@ class FilterItem extends StatelessWidget {
 
 ## Implement the filter carousel
 
-Filter items scroll to the left and right as the user drags. Scrolling requires 
-some kind of `Scrollable` widget. 
+Filter items scroll to the left and right as the user drags. Scrolling requires
+some kind of `Scrollable` widget.
 
 You might consider using a horizontal `ListView` widget,
 but a `ListView` widget positions the first element at the
-beginning of the available space, not at 
+beginning of the available space, not at
 the center, where your selector ring sits.
 
 A `PageView` widget is better suited for a carousel.
 A `PageView` widget lays out its children from the
 center of the available space and provides snapping physics.
-Snapping physics is what causes an item to snap to the center, 
+Snapping physics is what causes an item to snap to the center,
 no matter where the user releases a drag.
 
 {{site.alert.note}}
   In cases where you need to customize the
   position of child widgets within a scrollable area,
-  consider using a [`Scrollable`][] widget with a 
+  consider using a [`Scrollable`][] widget with a
   [`viewportBuilder`][], and place a
-  [`Flow`][] widget inside the `viewportBuilder`. 
+  [`Flow`][] widget inside the `viewportBuilder`.
   The `Flow` widget has a [delegate property][]
   that allows you to position child widgets wherever
   you want, based on the current `viewportOffset`.
@@ -293,9 +293,9 @@ Widget _buildCarousel(double itemSize) {
 
 The `PageView` widget displays all of the `FilterItem`
 widgets, and you can drag to the left and right.
-However, right now each `FilterItem` widget takes 
+However, right now each `FilterItem` widget takes
 up the entire width of the screen,
-and each `FilterItem` widget is displayed 
+and each `FilterItem` widget is displayed
 at the same size and opacity. There should be
 five `FilterItem` widgets on the screen,
 and the `FilterItem` widgets need to shrink and
@@ -303,10 +303,10 @@ fade as they move farther from the center of the screen.
 
 The solution to both of these issues is to introduce
 a `PageViewController`. The `PageViewController`’s
-`viewportFraction` property is used to display 
+`viewportFraction` property is used to display
 multiple `FilterItem` widgets on the screen at
 the same time. Rebuilding each `FilterItem` widget
-as the `PageViewController` changes allows you to 
+as the `PageViewController` changes allows you to
 change each `FilterItem` widget’s size and opacity
 as the user scrolls.
 
@@ -366,8 +366,8 @@ class _FilterSelectorState extends State<FilterSelector> {
 
 With the `PageViewController` added, five `FilterItem`
 widgets are visible on the screen at the same time,
-and the photo filter changes as you scroll, but 
-the `FilterItem` widgets are still the same size. 
+and the photo filter changes as you scroll, but
+the `FilterItem` widgets are still the same size.
 
 Wrap each `FilterItem` widget with an `AnimatedBuilder`
 to change the visual properties of each `FilterItem`
